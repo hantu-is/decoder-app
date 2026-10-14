@@ -4,7 +4,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
-# Пример словаря шифрования (двузначные коды -> кириллица)
+# Пример словаря шифрования (двузначные коды -> кириллица)ю
 # Можешь настроить пары под свои значения.ю
 CIPHER_DICT = {
     '10': 'А', '11': 'Б', '12': 'В', '13': 'Г', '14': 'Д',
