@@ -19,7 +19,7 @@ source.dir = .
 source.exts = py,png,jpg,kv,atlas
 
 # (list) Application requirements
-requirements = python3==3.11,kivy
+requirements = python3,kivy
 
 # (list) Permissions
 android.permissions = INTERNET
@@ -43,7 +43,6 @@ android.ndk = 25b
 # (bool) Automatically accept SDK license to prevent build failures
 android.accept_sdk_license = True
 
-# (list) Supported orientations
 # (list) Target architectures
 android.archs = arm64-v8a
 
