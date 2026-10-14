@@ -41,6 +41,9 @@ android.minapi = 21
 # (str) Android NDK version to use
 android.ndk = 25b
 
+# (bool) Automatically accept SDK license to prevent build failures
+android.accept_sdk_license = True
+
 # (str) The format used to package the app for store/testing ('apk' or 'aab')
 android.format = apk
 
