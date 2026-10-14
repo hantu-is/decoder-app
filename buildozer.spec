@@ -19,7 +19,6 @@ source.dir = .
 source.exts = py,png,jpg,kv,atlas
 
 # (list) Application requirements
-# Зафиксирован стабильный python3==3.11 для избежания ошибок компиляции тестов
 requirements = python3==3.11,kivy
 
 # (list) Permissions
@@ -43,6 +42,10 @@ android.ndk = 25b
 
 # (bool) Automatically accept SDK license to prevent build failures
 android.accept_sdk_license = True
+
+# (list) Supported orientations
+# (list) Target architectures
+android.archs = arm64-v8a
 
 # (str) The format used to package the app for store/testing ('apk' or 'aab')
 android.format = apk
