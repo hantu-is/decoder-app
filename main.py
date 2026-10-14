@@ -1,54 +1,65 @@
-[app]
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
 
-# (str) Title of your application
-title = Decoder
 
-# (str) Package name
-package.name = decoder
+class DecoderApp(App):
 
-# (str) Package domain (needed for android packaging)
-package.domain = org.hantu
+  def build(self):
+    self.title = 'Decoder'
 
-# (str) Version of the application
-version = 1.0
+    # Главный контейнер (расположение элементов друг под другом)
+    layout = BoxLayout(
+        orientation='vertical', padding=20, spacing=15, size_hint=(1, 1)
+    )
 
-# (str) Source files where the *.py files exist
-source.dir = .
+    # Заголовок
+    self.label_info = Label(
+        text='Введите текст для декодирования:',
+        size_hint=(1, 0.1),
+        font_size=18,
+    )
+    layout.add_widget(self.label_info)
 
-# (list) Source files to include (let empty to include all files)
-source.exts = py,png,jpg,kv,atlas
+    # Поле ввода текста
+    self.text_input = TextInput(
+        text='',
+        hint_text='Сюда введи зашифрованный текст...',
+        size_hint=(1, 0.3),
+        multiline=True,
+    )
+    layout.add_widget(self.text_input)
 
-# (list) Application requirements
-requirements = python3==3.11,kivy
+    # Кнопка действия
+    self.btn_decode = Button(
+        text='Декодировать', size_hint=(1, 0.15), background_color=(0.1, 0.6, 1, 1)
+    )
+    self.btn_decode.bind(on_press=self.on_decode_click)
+    layout.add_widget(self.btn_decode)
 
-# (list) Permissions
-android.permissions = INTERNET
+    # Поле вывода результата
+    self.label_result = Label(
+        text='Результат появится здесь', size_hint=(1, 0.3), font_size=16
+    )
+    layout.add_widget(self.label_result)
 
-# (str) Orientation of the application
-orientation = portrait
+    return layout
 
-#
-# Android specific
-#
+  def on_decode_click(self, instance):
+    # Получаем текст из поля ввода
+    user_text = self.text_input.text
 
-# (int) Target Android API, should be as high as possible.
-android.api = 31
+    # Твоя логика декодирования (пока что просто пример)
+    # Здесь ты можешь написать свой алгоритм расшифровки
+    decoded_text = (
+        f'Расшифровано: {user_text[::-1]}'  # Пример: переворачиваем текст задом наперед
+    )
 
-# (int) Minimum API your APK will support
-android.minapi = 21
+    # Выводим результат на экран
+    self.label_result.text = decoded_text
 
-# (str) Android NDK version to use
-android.ndk = 25b
 
-# (bool) Automatically accept SDK license to prevent build failures
-android.accept_sdk_license = True
-
-# (list) Supported orientations
-# (list) Target architectures
-android.archs = arm64-v8a
-
-# (str) The format used to package the app for store/testing ('apk' or 'aab')
-android.format = apk
-
-# (int) Logger level (0 = debug, 1 = info, 2 = warning, 3 = error)
-log_level = 2
+if __name__ == '__main__':
+  DecoderApp().run()
