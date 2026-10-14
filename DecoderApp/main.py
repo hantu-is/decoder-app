@@ -16,7 +16,7 @@ CIPHER_DICT = {
     ' ': ' '
 }
 
-# Обратный словарь для шифрования (буква -> код)
+# Обратный словарь для шифрования. (буква -> код)
 DECIPHER_DICT = {v: k for k, v in CIPHER_DICT.items()}
 
 class DecoderApp(App):
